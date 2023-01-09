@@ -21,9 +21,8 @@ const searchData = async (req, res) => {
       data: completion.data.choices,
     });
   } catch (e) {
-    console.log(e.response?.data.error?.message)
     res.status(500).send({
-        message: 'Xatolik yuz berdi!'
+        message: e.response?.data.error?.message || 'Xatolik yuz berdi!'
     })
   }
 };
