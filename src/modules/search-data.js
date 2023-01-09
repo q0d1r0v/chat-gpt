@@ -2,22 +2,29 @@
 const { Configuration, OpenAIApi } = require("openai");
 
 const searchData = async (req, res) => {
+  // data
   const { data } = req.body;
 
-  const configuration = new Configuration({
-    apiKey: "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",
-  });
-  
-  const openai = new OpenAIApi(configuration)
-  
-  const completion = await openai.createCompletion({
-    model: 'text-davinci-003',
-    prompt: data
-  })
+  try {
+    const configuration = new Configuration({
+      apiKey: "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",
+    });
 
-  res.send({
-    data: completion.data.choices
-  })
+    const openai = new OpenAIApi(configuration);
+
+    const completion = await openai.createCompletion({
+      model: "text-davinci-003",
+      prompt: data,
+    });
+
+    res.send({
+      data: completion.data.choices,
+    });
+  } catch (e) {
+    res.status(500).send({
+        message: 'Xatolik yuz berdi!'
+    })
+  }
 };
 
 module.exports = searchData;
