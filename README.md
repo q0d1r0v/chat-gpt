@@ -17,7 +17,7 @@ body: {
 method => POST
 route => /api/search-data
 body: {
-    data: 'your text for search'
+    question: 'your text for search'
 }
 
 ```

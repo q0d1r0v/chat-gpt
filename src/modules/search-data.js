@@ -3,7 +3,7 @@ const { Configuration, OpenAIApi } = require("openai");
 
 const searchData = async (req, res) => {
   // data
-  const { data } = req.body;
+  const { question } = req.body;
 
   try {
     // openai configurations
@@ -16,7 +16,7 @@ const searchData = async (req, res) => {
 
     const completion = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: data,
+      prompt: question,
       max_tokens: 500
     });
 
