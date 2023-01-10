@@ -20,9 +20,9 @@ const login = (req, res) => {
             },
           });
         } catch (e) {
-            res.status(500).send({
-                message: "Kirishda xatolik yuz berdi!"
-            })
+          res.status(500).send({
+            message: "Kirishda xatolik yuz berdi!",
+          });
         }
       });
     } else {
@@ -31,9 +31,6 @@ const login = (req, res) => {
       });
     }
   });
-
-  console.log(req.body);
-  console.log(users);
 };
 
 module.exports = login;

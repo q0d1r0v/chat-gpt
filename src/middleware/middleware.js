@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const getUsers = require("../users/users");
 
 const middleware = async (req, res, next) => {
-  const token = req.headers?.authorization?.split("Bearer ")[1] || 0
+  const token = req.headers?.authorization?.split("Bearer ")[1] || 0;
   const users = getUsers();
 
   if (token) {
