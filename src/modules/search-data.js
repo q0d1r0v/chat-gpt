@@ -6,6 +6,8 @@ const searchData = async (req, res) => {
   const { data } = req.body;
 
   try {
+    // openai configurations
+
     const configuration = new Configuration({
       apiKey: process.env.API_KEY,
     });
@@ -13,14 +15,17 @@ const searchData = async (req, res) => {
     const openai = new OpenAIApi(configuration);
 
     const completion = await openai.createCompletion({
-      model: "text-davinci-002",
+      model: "text-davinci-003",
       prompt: data,
     });
 
+    // send response
     res.send({
       data: completion.data.choices,
     });
   } catch (e) {
+    // send error response
+
     res.status(500).send({
         message: e.response?.data.error?.message || 'Xatolik yuz berdi!'
     })
