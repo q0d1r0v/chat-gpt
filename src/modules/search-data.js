@@ -17,6 +17,7 @@ const searchData = async (req, res) => {
     const completion = await openai.createCompletion({
       model: "text-davinci-003",
       prompt: data,
+      max_tokens: 500
     });
 
     // send response
